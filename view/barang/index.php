@@ -8,7 +8,8 @@
 </head>
 <style>
 body {
-  background-image: url('https://media.istockphoto.com/id/2165328281/id/foto/bintik-bintik-berkilau-emas-di-perbatasan-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=2gV9RPBeOhBGAkD8AAJk3qIgAtnYt3cATASgMx0JSv8=');
+  background-image: url('https://media.istockphoto.com/id/2139452511/id/vektor/vektor-latar-belakang-desain-gelombang-dekoratif-modern.jpg?s=1024x1024&w=is&k=20&c=6wYKCREP5VfQNdBcTQJbqgIGBytqF2CXwSCt5ZrZLqk=');
+  background-size: cover;
 }
 </style>
 <body>
@@ -87,8 +88,8 @@ body {
                     <td><?php echo $row['harga']; ?></td>
                     <td><?php echo $row['stok']; ?></td>
                     <td>
-                        <a href="edit.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-info">Edit</a>
-                        <a href="hapus.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                        <a href="edit.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-info">Edit</a>
+                        <a href="hapus.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                     </td>
                 </tr>
                 <?php
