@@ -38,8 +38,8 @@
         <li class="nav-item">
           <a class="nav-link" href="../toko/index.html">Myshop</a>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" role="search" method="GET" action="index.php">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
@@ -47,11 +47,12 @@
 </nav>
 </nav>
 <!-- nav -->
+
  <!-- database -->
  <div class="container">
-  <h3> data barang toko shani </h3>
-<a href="tambah.php" class="btn btn-primary mb-3">Tambah Barang</a>
-<table class="table table-bordered border-primary">
+  <h3> Data Barang Toko Shani </h3>
+  <a href="tambah.php" class="btn btn-primary mb-3">Tambah Barang</a>
+  <table class="table table-bordered border-primary">
     <thead>
         <th>id barang</th>
         <th>nama barang</th>
@@ -63,29 +64,36 @@
     <tbody>
         <?php 
         include '../../config/koneksi.php';
-        $query=mysqli_query($conn, "SELECT * FROM barang");
-        if(mysqli_num_rows($query)){
-            while($result=mysqli_fetch_assoc($query)){
+
+        // Ambil parameter pencarian
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+        // Menambahkan LIKE pada query untuk pencarian
+        $query = "SELECT * FROM barang WHERE nama_barang LIKE '%$search%'";
+        $result = mysqli_query($conn, $query);
+
+        if(mysqli_num_rows($result)){
+            while($row = mysqli_fetch_assoc($result)){
                 ?>
                 <tr>
-                    <td><?php echo $result['id_barang'] ?></td>
-                    <td><?php echo $result['nama_barang'] ?></td>
-                    <td><?php echo $result['id_jenis'] ?></td>
-                    <td><?php echo $result['harga'] ?></td>
-                    <td><?php echo $result['stok'] ?></td>
+                    <td><?php echo $row['id_barang']; ?></td>
+                    <td><?php echo $row['nama_barang']; ?></td>
+                    <td><?php echo $row['id_jenis']; ?></td>
+                    <td><?php echo $row['harga']; ?></td>
+                    <td><?php echo $row['stok']; ?></td>
                     <td>
-                        <a href="edit.php?id_barang=<?php echo $result['id_barang']; ?>" class="btn btn-outline-info">Edit</a>
-                        <a href="hapus.php?id_barang=<?php echo $result['id_barang']; ?>" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                        <a href="edit.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-info">Edit</a>
+                        <a href="hapus.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                     </td>
                 </tr>
-            <?php
+                <?php
             }
-        }else{
-            echo "data kosong";
+        } else {
+            echo "<tr><td colspan='6'>Data kosong</td></tr>";
         }
         ?>
     </tbody>
-</table>
+  </table>
 </div>
 <!-- database -->
 </body>
