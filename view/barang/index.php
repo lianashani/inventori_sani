@@ -6,10 +6,15 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+<style>
+body {
+  background-image: url('https://media.istockphoto.com/id/2165328281/id/foto/bintik-bintik-berkilau-emas-di-perbatasan-latar-belakang-putih.jpg?s=1024x1024&w=is&k=20&c=2gV9RPBeOhBGAkD8AAJk3qIgAtnYt3cATASgMx0JSv8=');
+}
+</style>
 <body>
 <!-- nav -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<nav class="navbar" style="background-color: #e3f2fd;">
+<nav class="navbar" style="background-color: #BBA53D;">
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">MyInvent</a>
@@ -40,7 +45,7 @@
       </ul>
       <form class="d-flex" role="search" method="GET" action="index.php">
         <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-dark" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -51,8 +56,8 @@
  <!-- database -->
  <div class="container">
   <h3> Data Barang Toko Shani </h3>
-  <a href="tambah.php" class="btn btn-primary mb-3">Tambah Barang</a>
-  <table class="table table-bordered border-primary">
+  <a href="tambah.php" class="btn btn-dark mb-3">Tambah Barang</a>
+  <table class="table table-bordered border-dark">
     <thead>
         <th>id barang</th>
         <th>nama barang</th>
@@ -82,8 +87,8 @@
                     <td><?php echo $row['harga']; ?></td>
                     <td><?php echo $row['stok']; ?></td>
                     <td>
-                        <a href="edit.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-info">Edit</a>
-                        <a href="hapus.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                        <a href="edit.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-info">Edit</a>
+                        <a href="hapus.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                     </td>
                 </tr>
                 <?php
